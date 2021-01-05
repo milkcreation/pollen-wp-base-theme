@@ -1,0 +1,74 @@
+// Variables
+$root-path-url: "../../";
+@import "../variables";
+
+// Dépendances
+/** Bootstrap Complete */
+@import "~bootstrap/scss/bootstrap";
+/**/
+
+/** Bootstrap Grid * /
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins/breakpoints';
+@import '~bootstrap/scss/mixins/grid';
+@import '~bootstrap/scss/mixins/grid-framework';
+@import '~bootstrap/scss/grid';
+/**/
+
+@import "../reset";
+@import "../helpers";
+@import "../fonts/styles";
+@import "../mixins/elements";
+@import "~font-awesome/scss/font-awesome";
+@import "~presstify-framework/anim/scss/styles";
+@import "~presstify-framework/theme/scss/styles";
+@import "~presstify-plugins/cookie-law/Resources/assets/scss/styles";
+@import "~presstify-plugins/outdated-browser/Resources/assets/scss/styles";
+@import "../partial/breadcrumb/styles";
+@import "../partial/navbar/styles";
+
+// Personnalisation
+@import "layout";
+@import "responsive";
+
+body {
+  @include elements-body-attrs;
+}
+
+@include elements-styles;
+
+/** STRUCTURE */
+.Content {
+  margin-top: 70px;
+  margin-bottom: 30px;
+}
+
+.ContentBody {
+  margin-top: 15px;
+}
+
+/** COLOPHON */
+.Colophon {
+  padding: 20px 0 10px;
+  background-color: color(lighter);
+  color: color(medium);
+
+  a, a:active, a:focus, a:visited {
+    color: color(medium);
+  }
+}
+
+.Colophon-logoLink {
+  display:block;
+  padding: 10px;
+
+  svg {
+    fill: color(medium);
+  }
+}
+
+.Copyright {
+  font-size: 0.8em;
+  font-style: italic;
+}

@@ -1,0 +1,207 @@
+// Responsive SVG
+// @see https://la-cascade.io/rendre-svg-responsif/
+.svg-fluid {
+  & {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    vertical-align: middle;
+    overflow: hidden;
+  }
+
+  & > svg {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+// Graisses de polices
+.FontWeight--100,
+.FontWeight--thin {
+  font-weight: 100;
+}
+
+.FontWeight--200,
+.FontWeight--extra-light {
+  font-weight: 200;
+}
+
+.FontWeight--300,
+.FontWeight--light {
+  font-weight: 300;
+}
+
+.FontWeight--400,
+.FontWeight--regular {
+  font-weight: 400;
+}
+
+.FontWeight--500,
+.FontWeight--medium {
+  font-weight: 500;
+}
+
+.FontWeight--600,
+.FontWeight--semi-bold {
+  font-weight: 600;
+}
+
+.FontWeight--700,
+.FontWeight--bold {
+  font-weight: 700;
+}
+
+.FontWeight--800,
+.FontWeight--extra-bold {
+  font-weight: 800;
+}
+
+.FontWeight--900,
+.FontWeight--black {
+  font-weight: 900;
+}
+
+// IMAGE DE FOND
+.BkgImg--cover,
+.BkgImg--contain {
+  background-attachment: scroll;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.BkgImg--cover {
+  background-size: cover;
+}
+
+.BkgImg--contain {
+  background-size: contain;
+}
+
+// WORDPRESS - Éléments fixes affectés par l'admin-bar
+body.admin-bar .WpAdminBarPad {
+  & {
+    top: 32px;
+  }
+
+  @media (max-width: 782px) {
+    .WpAdminBarPad {
+      top: 46px;
+    }
+  }
+}
+
+// Hack Google Chrome (saut de ligne)
+.Nowrap {
+  white-space: nowrap;
+}
+
+// Solution alternative
+.Spacefix {
+  & {
+    font-size: 0;
+  }
+  & > * {
+    display: inline-block;
+    font-size: 1rem;
+  }
+}
+
+// Alignement vertical
+// Usage : <div class="ValignWrapper"><div class="ValignContent">{{ HTML Content }}</div></div>
+.ValignWrapper {
+  display: table;
+  height: 100%;
+}
+
+.ValignContent {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+// Listes
+.ListBy--1,
+.ListBy--2,
+.ListBy--3,
+.ListBy--4,
+.ListBy--5,
+.ListBy--6 {
+  & {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+
+  &::before,
+  &::after {
+    display: table;
+    content: "";
+  }
+
+  &::after {
+    clear: both;
+  }
+
+  & > li {
+    margin: 0;
+    padding: 0;
+    float: left;
+  }
+}
+
+.ListBy--1 > li {
+  width: 100%;
+  float: none;
+}
+
+.ListBy--2 > li {
+  & {
+    width: 50%;
+  }
+
+  &:nth-child(2n+1) {
+    clear: left;
+  }
+}
+
+.ListBy--3 > li {
+  & {
+    width: 33.333333%;
+  }
+
+  &:nth-child(3n+1) {
+    clear: left;
+  }
+}
+
+.ListBy--4 > li {
+  & {
+    width: 25%;
+  }
+
+  &:nth-child(4n+1) {
+    clear: left;
+  }
+}
+
+.ListBy--5 > li {
+  & {
+    width: 20%;
+  }
+
+  &:nth-child(5n+1) {
+    clear: left;
+  }
+}
+
+.ListBy--6 > li {
+  & {
+    width: 16.666666%;
+  }
+
+  &:nth-child(6n+1) {
+    clear: left;
+  }
+}

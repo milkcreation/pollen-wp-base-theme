@@ -1,0 +1,16 @@
+// Variables
+$root-path-url: "../../../";
+@import "../../variables";
+
+// Dépendances
+@import "~wp-includes/css/dist/block-library/style.css";
+@import "~wp-includes/css/dist/block-library/theme.css";
+@import "../../mixins/article";
+
+// Personnalisation
+.ArticleBody-content {
+  @include article-body-attrs;
+  @include article-styles;
+  @include article-preview-helpers;
+  @include article-blocks-styles;
+}

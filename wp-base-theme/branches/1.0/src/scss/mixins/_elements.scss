@@ -1,0 +1,478 @@
+// Variables
+$root-path-url: "../../";
+@import "../variables";
+
+// Personnalisation
+/** BODY */
+@mixin elements-body-attrs {
+  color: color(regular);
+  font-family: fontFamily(regular);
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: fontWeight(regular);
+  text-rendering: optimizeLegibility;
+  vertical-align: baseline;
+}
+
+/** TITRES */
+@mixin elements-titles-styles {
+  h1, h2, h3, h4, h5, h6 {
+    position: relative;
+    font-family: fontFamily(regular);
+    margin: 0.3em 0 0.5em;
+    text-transform: none;
+    line-height: 1.1;
+    color: color(regular);
+    padding-bottom: .3em;
+  }
+
+  h1 {
+    font-size: 3.6em;
+    font-weight: fontWeight(extra-bold);
+    display: block;
+    margin-bottom: 0.7em;
+    text-align: center;
+
+    &::before {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      display: block;
+      content: " ";
+      height: 3px;
+      width: 30px;
+      margin-left: 15px;
+      background-color:  color(primary);
+    }
+  }
+
+  h2, h3 {
+    &::before {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      display: block;
+      content: " ";
+      height: 2px;
+      width: 24px;
+    }
+  }
+
+  h2 {
+    font-size: 2.4em;
+    font-weight: fontWeight(black);
+
+    &::before {
+      background-color:  color(primary);
+    }
+  }
+
+  h3 {
+    font-size: 2.2em;
+    font-weight: fontWeight(extra-bold);
+
+    &::before {
+      background-color: color(secondary);
+    }
+  }
+
+  h4, h5, h6 {
+    color: lighten(color(regular), 10%);
+  }
+
+  h4 {
+    font-size: 1.6em;
+    font-weight: fontWeight(bold);
+  }
+
+  h5 {
+    font-size: 1.4em;
+    font-weight: fontWeight(semi-bold);
+  }
+
+  h6 {
+    font-size: 1.2em;
+    font-weight: fontWeight(medium);
+  }
+}
+
+/** LIENS */
+@mixin elements-links-styles {
+  a {
+    &,
+    em,
+    i,
+    strong,
+    b {
+      color: color(primary);
+      text-decoration: none;
+
+      &:hover {
+        color: darken(color(primary), 20%);
+      }
+    }
+
+    &:visited,
+    &:focus,
+    &:active {
+      &,
+      em,
+      i,
+      strong,
+      b {
+        color: lighten(color(primary), 10%);
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+/** BOUTONS */
+@mixin elements-buttons-styles {
+  a, button {
+    &[class*=" Button--"],
+    &[class^="Button--"] {
+      position: relative;
+      display: inline-block;
+      padding: 0.8em 3em;
+      cursor: pointer;
+      border-style: solid;
+      border-width: 1px;
+      border-radius: 6px;
+      font-family: fontFamily(regular);
+      font-size: 0.8em;
+      font-weight: fontWeight(bold);
+      text-transform: uppercase;
+      outline: none;
+      transition: color 300ms cubic-bezier(0.42, 0, 1.0, 1.0), background-color 300ms cubic-bezier(0.42, 0, 1.0, 1.0);
+      white-space: nowrap;
+
+      &::before {
+        position: absolute;
+        top: -1px;
+        right: -1px;
+        bottom: -1px;
+        left: -1px;
+        content: "";
+        display: block;
+        border-radius: 6px;
+        border-style: solid;
+        border-width: 1px;
+        transition: transform 300ms cubic-bezier(0.42, 0, 1.0, 1.0), opacity 300ms cubic-bezier(0.42, 0, 1.0, 1.0);
+      }
+
+      &:not([disabled]):hover {
+        border-style: solid;
+        border-width: 1px;
+
+        &::before {
+          opacity: 0;
+          transform: scale(0);
+        }
+      }
+
+      &[disabled] {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    }
+
+    &.Button--1 {
+      background-color: color(primary);
+
+      &,
+      &:active,
+      &:focus,
+      &:visited {
+        color: color(white);
+
+        &.Button--alt {
+          color: color(primary);
+        }
+      }
+
+      &::before {
+        border-color: color(white);
+      }
+
+      &:not([disabled]):hover {
+        color: color(primary);
+        background-color: color(white);
+        border-color: color(primary);
+      }
+
+      &.Button--alt {
+        background-color: color(white);
+
+        &:not([disabled]):hover {
+          color: color(white);
+          background-color: color(primary);
+          border-color: color(white);
+        }
+      }
+    }
+
+    &.Button--2 {
+      background-color: color(secondary);
+
+      &,
+      &:active,
+      &:focus,
+      &:visited {
+        color: color(white);
+
+        &.Button--alt {
+          color: color(secondary);
+        }
+      }
+
+      &::before {
+        border-color: color(white);
+      }
+
+      &:not([disabled]):hover {
+        color: color(secondary);
+        background-color: color(white);
+        border-color: color(secondary);
+      }
+
+      &.Button--alt {
+        color: color(secondary);
+        background-color: color(white);
+
+        &:not([disabled]):hover {
+          color: color(white);
+          background-color: color(secondary);
+          border-color: color(white);
+        }
+      }
+    }
+
+    &.Button--3 {
+      background-color: color(regular);
+
+      &,
+      &:active,
+      &:focus,
+      &:visited {
+        color: color(white);
+
+        &.Button--alt {
+          color: color(regular);
+        }
+      }
+
+      &::before {
+        border-color: color(white);
+      }
+
+      &:not([disabled]):hover {
+        color: color(regular);
+        background-color: color(white);
+        border-color: color(regular);
+      }
+
+      &.Button--alt {
+        color: color(regular);
+        background-color: color(white);
+
+        &:not([disabled]):hover {
+          color: color(white);
+          background-color: color(regular);
+          border-color: color(white);
+        }
+      }
+    }
+
+    &.Button--alt {
+      &::before {
+        opacity: 0;
+        transform: scale(0);
+      }
+
+      &:not([disabled]):hover::before {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    &.Button--small {
+      font-size: 0.7em;
+      padding: 0.4em 2em;
+    }
+
+    &.Button--large {
+      font-size: 1em;
+      padding: 1.2em 4em;
+    }
+
+    &.Button--wide {
+      display:block;
+      text-align:center;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+/** ETIQUETTES */
+@mixin elements-labels-styles {
+  [class*=" Label--"],
+  [class^="Label--"] {
+    position: relative;
+    display: inline-block;
+    padding: 5px 30px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 3px;
+    font-family: fontFamily(regular);
+    font-size: 14px;
+    font-weight: fontWeight(bold);
+    text-transform: uppercase;
+  }
+
+  .Label--1 {
+    color: color(white);
+    background-color: color(regular);
+    border-color: color(white);
+
+    &.Label--alt {
+      color: color(regular);
+      background-color: color(white);
+      border-color: color(regular);
+    }
+  }
+
+  .Label--2 {
+    color: color(white);
+    background-color: color(primary);
+    border-color: color(white);
+
+    &.Label--alt {
+      color: color(primary);
+      background-color: color(white);
+      border-color: color(primary);
+    }
+  }
+
+  .Label--3 {
+    color: color(white);
+    background-color: color(secondary);
+    border-color: color(white);
+
+    &.Label--alt {
+      color: color(secondary);
+      background-color: color(white);
+      border-color: color(secondary);
+    }
+  }
+}
+
+/** BALISES HTML */
+@mixin elements-tags-styles {
+  figure {
+    margin-bottom: 0;
+  }
+
+  p {
+    margin-bottom: 0.5em;
+  }
+
+  img {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/** SET DES STYLES */
+@mixin elements-styles {
+  // TITRES
+  @include elements-titles-styles;
+
+  // LIENS
+  @include elements-links-styles;
+
+  // BOUTONS
+  @include elements-buttons-styles;
+
+  // ETIQUETTES
+  @include elements-labels-styles;
+
+  // BALISES HTML
+  @include elements-tags-styles;
+
+  // COMPATIBILITE 1.4 - COLONNAGE
+  div.tify-2cols,
+  div.tify-3cols,
+  div.tify-4cols {
+    &, > div {
+      box-sizing: border-box !important;
+    }
+
+    & {
+      margin-left: -10px !important;
+      margin-right: -10px !important;
+    }
+
+    &::before,
+    &::after {
+      display: block;
+      content: " ";
+    }
+
+    &::after {
+      clear: both;
+    }
+
+    > div {
+      float: left;
+      margin: 0;
+      padding: 0 10px;
+    }
+  }
+
+  .tify-quarter-col-simple {
+    width: 25%;
+  }
+
+  .tify-quarter-col-triple {
+    width: 75%;
+  }
+
+  .tify-third-col-simple {
+    width: 33.333333%;
+  }
+
+  .tify-third-col-double {
+    width: 66.666666%;
+  }
+
+  .tify-half-col-simple {
+    width: 50%;
+  }
+
+  @media (max-width: 767px) {
+    .tify-quarter-col-simple,
+    .tify-quarter-col-triple,
+    .tify-third-col-simple,
+    .tify-third-col-double,
+    .tify-half-col-simple {
+      float: none;
+      width: 100%;
+    }
+  }
+}
+
+/** GRADIENTS */
+// @see https://gradienta.io/common-yarn
+@mixin gradient-linear-styles {
+  background: gradient(linear);
+}
+
+@mixin gradient-radial-styles {
+  background: gradient(radial);
+  background-blend-mode: screen, screen, lighten, overlay, lighten, difference, normal;
+}
