@@ -6,7 +6,7 @@ namespace App\Partial;
 
 use App\App;
 use tiFy\Container\ServiceProvider;
-use tiFy\Support\Proxy\Partial;
+use tiFy\Partial\Contracts\PartialContract;
 
 class PartialServiceProvider extends ServiceProvider
 {
@@ -16,8 +16,12 @@ class PartialServiceProvider extends ServiceProvider
     public function boot(): void
     {
         /** @var App $app */
-        $app = $this->getContainer()->get('app');
+        $partialManager = $this->getContainer()->get(PartialContract::class);
 
-        // Partial::register('navbar', (new NavbarPartial())->setApp($app));
+        // Déclaration
+        $this->getContainer()->add(NavbarPartial::class, function () use ($app) {
+            return (new NavbarPartial($this->getContainer()->get('app'), $this->getContainer()->get(PartialContract::class)));
+        });
+        $partialManager->register('navbar', NavbarPartial::class);
     }
 }

@@ -69,8 +69,6 @@ return [
         /** Applicatifs */
         App\Filesystem\FilesystemServiceProvider::class,
         App\ServiceProvider::class,
-        App\Form\FormServiceProvider::class,
-        App\Metabox\MetaboxServiceProvider::class,
         App\Partial\PartialServiceProvider::class,
         App\Routing\RoutingServiceProvider::class,
         App\Wordpress\WordpressServiceProvider::class

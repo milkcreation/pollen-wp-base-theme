@@ -12,7 +12,7 @@ class NavbarPartial extends AbstractPartial
      */
     public function render(): string
     {
-        $items = array_values($this->get('items', []));
+        /*$items = array_values($this->get('items', []));
         $key = (int)floor(count($items) / 2);
         $items = Arr::insertAfter($items, [
             'attrs'   => [
@@ -38,7 +38,7 @@ class NavbarPartial extends AbstractPartial
             return $item;
         }, $items));
 
-        $this->set('attrs.data-control', 'admin-bar-pos');
+        $this->set('attrs.data-control', 'admin-bar-pos');*/
 
         return parent::render();
     }
