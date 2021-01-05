@@ -1,0 +1,17 @@
+{
+  "private": true,
+  "name": "starter-kit",
+  "version": "2.1.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jordy Manner",
+  "license": "ISC",
+  "dependencies": {
+    "presstify-framework": "file:../../../vendor/presstify/framework"
+  },
+  "engines": {
+    "node": ">=12.14.0"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "extends": [
+    "stylelint-config-wordpress"
+  ],
+  "plugins": [
+    "stylelint-a11y",
+    "stylelint-selector-bem-pattern",
+    "stylelint-scss"
+  ],
+  "rules": {
+    "a11y/no-outline-none": true,
+    "a11y/selector-pseudo-class-focus": true,
+    "at-rule-no-unknown": null,
+    "font-family-no-missing-generic-family-keyword": null,
+    "indentation": 2,
+    "no-descending-specificity": null,
+    "plugin/selector-bem-pattern": {
+      "componentName": "[A-Z]+",
+      "componentSelectors": {
+        "initial": "^\\.{componentName}(?:-[a-z]+)?$",
+        "combined": "^\\.combined-{componentName}-[a-z]+$"
+      },
+      "utilitySelectors": "^\\.util-[a-z]+$"
+    },
+    "scss/at-rule-no-unknown": true,
+    "selector-class-pattern": {
+      "resolveNestedSelectors": true
+    }
+  }
+}
