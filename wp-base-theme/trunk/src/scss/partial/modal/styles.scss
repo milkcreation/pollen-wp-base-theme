@@ -1,0 +1,29 @@
+// Variables
+$root-path-url: "../../../";
+@import "../../variables";
+
+// Personnalisation
+.modal-backdrop {
+  background-color: color(white);
+}
+
+.modal-backdrop.in {
+  opacity: 0.9;
+}
+
+.modal-content {
+  box-shadow: -1px 2px 60px 0px rgba(0, 0, 0, 0.1);
+  border: none;
+}
+
+.modal-header {
+  text-align: center;
+  display: block;
+  border-bottom: none;
+}
+
+.modal-footer {
+  text-align: center;
+  display: block;
+  border-top: none;
+}

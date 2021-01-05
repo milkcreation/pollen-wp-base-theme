@@ -1,0 +1,98 @@
+/* global vars */
+@use "sass:map";
+@use "sass:string";
+
+// CHEMINS
+$root-path-url: "../" !default;
+$font-path-url: "#{$root-path-url}fonts" !default;
+$img-path-url: "#{$root-path-url}images" !default;
+
+// POLICES DE CARACTERES
+$font-family: (
+    serif : "TimesNewRoman, Times New Roman, Times, Baskerville, Georgia, serif",
+    sans-serif: "Arial, Helvetica Neue, Helvetica, sans-serif",
+    monospace: "'Courier New', Courier, monospace",
+    regular: "'Libre Franklin', Arial, Helvetica, sans-serif",
+    alt: "'Roboto Slab', Times, serif",
+    glyph: "'SedeaPro'",
+    dashicons: "'Dashicons'",
+    font-awesome: "'Font Awesome'"
+) !default;
+
+@function fontFamily($alias) {
+  @return string.unquote(map.get($font-family, $alias));
+}
+
+// GRAISSES DE POLICE
+$font-weight: (
+    thin: 100,
+    extra-light: 200,
+    light: 300,
+    regular: 400,
+    medium:500,
+    semi-bold: 600,
+    bold: 700,
+    extra-bold: 800,
+    black: 900
+) !default;
+
+@function fontWeight($alias) {
+  @return map.get($font-weight, $alias);
+}
+
+// COULEURS
+$colors: map.merge((
+    "transparent": transparent,
+    "black": #000000,
+    "white": #FFFFFF,
+    "light": #E4E4E4,
+    "lighter": #F4F4F4,
+    "medium": #999999,
+    "medium-alt": #757678,
+    "dark": #2B2B2B,
+    "darker": #1B1B1B,
+    "regular": #3B3B3B,
+    "error": #E74C3C,
+    "info": #3498DB,
+    "success": #1ABC9C,
+    "warning": #F1C40F
+), map.get($config, colors)) !default;
+
+@function color($alias) {
+  @if type-of($alias) != string {
+    $alias : "#{$alias}";
+  }
+
+  @return map.get($colors, $alias);
+}
+
+// GRADIENTS
+$gradients : (
+  linear: linear-gradient(288deg, #FFB6B9 0%, #FFB6B9 35%, #FAE3D9 calc(35% + 1px), #FAE3D9 45%, #BBDED6 calc(45% + 1px), #BBDED6 65%, #61C0BF calc(65% + 1px), #61C0BF 100%),
+  radial: "radial-gradient(80.99% 100% at 50% 0%, #00FF0A 0%, #36008E 100%), radial-gradient(50% 123.47% at 50% 50%, #EFE7C8 0%, #36008E 100%), linear-gradient(301.28deg, #FF006B 0%, #48DD9E 100%), linear-gradient(294.84deg, #5A60E4 0%, #D30000 100%), linear-gradient(52.29deg, #000000 0%, #00FF85 100%), radial-gradient(100% 138.69% at 100% 0%, #0007A5 0%, #FF7A00 100%), radial-gradient(70.41% 100% at 50% 0%, #D5B300 0%, #2200AA 100%)"
+) !default;
+
+@function gradient($alias) {
+  @return string.unquote(map.get($gradients, $alias));
+}
+
+// ANIM
+// -- Animations
+$use-fadeInRight: true !default;
+$use-fadeInLeft: true !default;
+$use-fadeInDown: true !default;
+$use-fadeInUp: true !default;
+// -- Effets
+$anim-ease-in-out-back: true !default;
+// --Réglages
+$anim-delay-end: 12 !default;
+$anim-duration-end: 12 !default;
+
+// FONT-AWESOME
+$fa-font-path: "~font-awesome/fonts" !default;
+
+// FORMULAIRES
+$form-field-border-width: 0 !default;
+$form-field-radio-background-color: color(primary) !default;
+$form-field-checkbox-background-color: color(primary) !default;
+$form-field-border-color:color(regular) !default;

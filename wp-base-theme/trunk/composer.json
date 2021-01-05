@@ -1,0 +1,60 @@
+{
+  "name": "pollen/wp-base-theme",
+  "description": "Theme de démarrage Wordpress de PresstiFy",
+  "homepage": "https://www.presstify.com/pollen-solution/wp-base-theme/",
+  "type": "wordpress-theme",
+  "keywords": [
+    "presstify",
+    "wordpress",
+    "theme",
+    "bootstrap",
+    "boilerplate",
+    "starter kit"
+  ],
+  "time": "2021-01-05",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Jordy Manner",
+      "email": "jordy@presstify.com",
+      "role": "Developper"
+    }
+  ],
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://composer.presstify.com/pollen-solutions/"
+    },
+    {
+      "type": "composer",
+      "url": "https://composer.presstify.com/presstify/"
+    },
+    {
+      "type":"composer",
+      "url":"https://wpackagist.org"
+    }
+  ],
+  "require": {
+    "php": ">=7.3",
+    "composer/installers": "~1.0",
+    "pollen-solutions/cookie-law": "^1.0",
+    "pollen-solutions/outdated-browser": "^1.0",
+    "pollen-solutions/theme-suite": "^1.0",
+    "pollen-solutions/tiny-mce": "^1.0",
+    "presstify/framework": "^2.1",
+    "presstify/presstify-mu": "^2.0",
+    "wpackagist-plugin/classic-editor": "^1.6"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "app"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "config" : {
+    "optimize-autoloader": true,
+    "preferred-install": "dist",
+    "sort-packages": true
+  }
+}

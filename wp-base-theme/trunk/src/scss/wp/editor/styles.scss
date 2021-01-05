@@ -1,0 +1,15 @@
+// Variables
+$root-path-url: "../../../";
+@import "../../variables";
+
+// Dépendances
+@import "../../mixins/article";
+@import "../../fonts/styles";
+@import "layout";
+
+// Personnalisation
+body {
+  @include article-body-attrs;
+}
+
+@include article-styles;
