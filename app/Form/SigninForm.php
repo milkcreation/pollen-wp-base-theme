@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Form\Authentication;
+namespace App\Form;
 
 use App\AppAwareTrait;
 use tiFy\Form\FormFactory as BaseFormFactory;

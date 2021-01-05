@@ -41,7 +41,7 @@
     "pollen-solutions/outdated-browser": "^1.0",
     "pollen-solutions/theme-suite": "^1.0",
     "pollen-solutions/tiny-mce": "^1.0",
-    "presstify/framework": "2.1.x-dev",
+    "presstify/framework": "^2.1",
     "presstify/presstify-mu": "^2.0",
     "wpackagist-plugin/classic-editor": "^1.6"
   },
