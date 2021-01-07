@@ -5,18 +5,19 @@ declare(strict_types=1);
 namespace App\Form;
 
 use App\AppAwareTrait;
-use tiFy\Form\FormFactory as BaseFormFactory;
+use tiFy\Contracts\Form\FormFactory as FormFactoryContract;
+use tiFy\Form\BaseFormFactory;
 
-class Signin extends BaseFormFactory
+class SigninForm extends BaseFormFactory
 {
     use AppAwareTrait;
 
     /**
      * @inheritDoc
      */
-    public function boot(): void
+    public function boot(): FormFactoryContract
     {
-        $this->set([
+        $this->params([
             'buttons'  => [
                 'submit' => false
             ],
@@ -27,7 +28,7 @@ class Signin extends BaseFormFactory
                         'placeholder'  => __('Renseignez votre email', 'theme'),
                     ],
                     'required' => true,
-                    'title'    => __('Email', 'theme'),
+                    'title'    => __('Identifiant ou adresse e-mail', 'theme'),
                     'type'     => 'text',
                 ],
                 'password'      => [
@@ -51,5 +52,6 @@ class Signin extends BaseFormFactory
                 ],
             ]
         ]);
+        return parent::boot();
     }
 }

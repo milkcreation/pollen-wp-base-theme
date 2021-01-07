@@ -14,7 +14,6 @@ $font-family: (
     monospace: "'Courier New', Courier, monospace",
     regular: "'Libre Franklin', Arial, Helvetica, sans-serif",
     alt: "'Roboto Slab', Times, serif",
-    glyph: "'SedeaPro'",
     dashicons: "'Dashicons'",
     font-awesome: "'Font Awesome'"
 ) !default;
@@ -22,6 +21,11 @@ $font-family: (
 @function fontFamily($alias) {
   @return string.unquote(map.get($font-family, $alias));
 }
+
+$font-family-enabled: (
+    'LibreFranklin',
+    'RobotoSlab'
+) !default;
 
 // GRAISSES DE POLICE
 $font-weight: (
@@ -90,9 +94,3 @@ $anim-duration-end: 12 !default;
 
 // FONT-AWESOME
 $fa-font-path: "~font-awesome/fonts" !default;
-
-// FORMULAIRES
-$form-field-border-width: 0 !default;
-$form-field-radio-background-color: color(primary) !default;
-$form-field-checkbox-background-color: color(primary) !default;
-$form-field-border-color:color(regular) !default;

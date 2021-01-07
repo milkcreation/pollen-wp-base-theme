@@ -1,0 +1,1 @@
+import './scss/mail/mail.scss';

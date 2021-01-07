@@ -1,15 +1,17 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace App\Controller;
 
 use App\AppAwareTrait;
-use App\Form\Authentication\Signin as SigninForm;
-use tiFy\Contracts\Form\FactoryField;
+use App\Form\SigninForm;
+use tiFy\Contracts\Form\FieldDriver;
 use tiFy\Contracts\Http\Response;
+use tiFy\Form\FieldValidateException;
 use tiFy\Support\Proxy\Form;
 use tiFy\Support\Proxy\Request;
 use tiFy\Support\Proxy\Url;
-use tiFy\Validation\Validator as v;
 use tiFy\Routing\BaseController;
 use WP_Error;
 
@@ -36,44 +38,54 @@ class AuthenticationController extends BaseController
      */
     public function signin(): Response
     {
-        $this->share('navbar', false);
+        // Mise en file des scripts.
+        add_action(
+            'wp_enqueue_scripts',
+            function () {
+                wp_enqueue_script('app.authentication');
+                wp_enqueue_style('app.authentication');
+            }
+        );
+        // Classes de la balise body.
+        add_filter(
+            'body_class',
+            function ($classes) {
+                $classes[] = 'Body--authentication';
 
+                return $classes;
+            }
+        );
+        // Meta Balises.
+        $this->app()->config()->metaTags(
+            [
+                'title'       => __('Authentification', 'theme'),
+                'description' => __('Interface d\'authentification du site', 'theme'),
+                'robots'      => 'none',
+            ]
+        );
+        remove_all_actions('wpseo_head');
         /** @var SigninForm $form */
-        $form = Form::get('auth.signin')->prepare();
-
-        if (Request::isMethod('POST')) {
-            $this->validateSignin($form);
-
+        $form = Form::register('signin', (new SigninForm())->setApp($this->app()))->boot();
+        if ($form->isSubmitted()) {
+            $this->validate($form);
             if ($form->isSuccessed()) {
                 return $form->handle()->redirect();
             }
         }
-
-        // Mise en file des scripts
-        add_action('wp_enqueue_scripts', function () {
-            wp_enqueue_script('app.authentication');
-            wp_enqueue_style('app.authentication');
-        });
-
-        // Meta Balise
-        $this->app()->config()->metaTags([
-            'title' => __('Authentification', 'theme'),
-        ]);
-
-        // Classes de la balise body
-        add_filter('body_class', function ($classes) {
-            $classes[] = 'Body--authentication';
-
-            return $classes;
-        });
-
-        $this->set([
-            'article-header' => [
-                'title' => __('Authentification', 'theme'),
-            ],
-            'content'        => $form,
-        ]);
-
+        // Configuration.
+        $this->set(
+            [
+                'article-header' => [
+                    'title'      => __('Authentification', 'theme'),
+                    'content'    => false,
+                    'breadcrumb' => false,
+                ],
+                'article-body'   => [
+                    'content' => $form,
+                ],
+                'navbar'         => false,
+            ]
+        );
         return $this->view('app::authentication', $this->all());
     }
 
@@ -84,75 +96,74 @@ class AuthenticationController extends BaseController
      *
      * @return void
      */
-    public function validateSignin(SigninForm $form): void
+    public function validate(SigninForm $form): void
     {
-        if (!$form->handle()->verify()) {
-            $form->error(__('Une erreur est survenue, impossible de valider votre demande d\'authentification.',
-                'theme'));
+        /** @var FieldDriver[] $fields */
+        $fields = $form->fields()->all();
+
+        try {
+            $fields['email']->validate();
+        } catch (FieldValidateException $e) {
+            $fields['email']->error(__('Le champ "E-mail" doit être renseigné.', 'theme'));
+        }
+
+        try {
+            $fields['password']->validate();
+        } catch (FieldValidateException $e) {
+            $fields['password']->error(__('Le champ "Mot de passe" doit être renseigné.', 'theme'));
+        }
+
+        if (!$form->handle()->isValidated()) {
+            $form->handle()->fail();
         } else {
-            $form->handle()->prepare();
-
-            /** @var FactoryField[] $fields */
-            $fields = $form->fields()->all();
-
-            if (!v::notEmpty()->validate($form->handle()->get('email'))) {
-                $fields['email']->addError(__('Le champ "E-mail" doit être renseigné.', 'theme'));
+            $secure_cookie = '';
+            if (($log = Request::input('log', false)) && !force_ssl_admin()) {
+                $user_name = sanitize_user($log);
+                if ($user = get_user_by('login', $user_name)) {
+                    if (get_user_option('use_ssl', $user->ID)) {
+                        $secure_cookie = true;
+                        force_ssl_admin(true);
+                    }
+                }
             }
 
-            if (!v::notEmpty()->validate($form->handle()->get('password'))) {
-                $fields['password']->addError(__('Le champ "Mot de passe" doit être renseigné.', 'theme'));
+            $reauth = !Request::input('reauth') ? false : true;
+            $user = wp_signon(
+                [
+                    'user_login'    => $fields['email']->getValue(),
+                    'user_password' => $fields['password']->getValue(),
+                    'remember'      => false,
+                ],
+                $secure_cookie
+            );
+
+            if (!Request::cookie(LOGGED_IN_COOKIE)) {
+                if (headers_sent()) {
+                    $user = new WP_Error(
+                        'test_cookie',
+                        __('Désolé, impossible d\'enregistrer les cookies d\'authentification.', 'theme')
+                    );
+                } elseif (Request::cookie('testcookie') && !Request::cookie(TEST_COOKIE)) {
+                    $user = new WP_Error(
+                        'test_cookie',
+                        __(
+                            'Il semble que les cookies soit bloqués par votre navigateur. ' .
+                            'Impossible de procéder à l\'authentification.',
+                            'theme'
+                        )
+                    );
+                }
             }
 
-            if (!$form->hasError()) {
-                $secure_cookie = '';
-                if (($log = Request::input('log', false)) && !force_ssl_admin()) {
-                    $user_name = sanitize_user($log);
-                    if ($user = get_user_by('login', $user_name)) {
-                        if (get_user_option('use_ssl', $user->ID)) {
-                            $secure_cookie = true;
-                            force_ssl_admin(true);
-                        }
-                    }
+            if (!$user instanceof WP_Error && !$reauth) {
+                $form->handle()->setRedirectUrl(Url::root('/')->render());
+                $form->handle()->success();
+            } elseif ($user instanceof WP_Error) {
+                if ($message = $user->get_error_message()) {
+                    $form->error($message);
+                } else {
+                    $form->error(__('Erreur lors de la tentative d\'authentification', 'theme'));
                 }
-
-                $reauth = !Request::input('reauth') ? false : true;
-                $user = wp_signon([
-                    'user_login'    => $form->handle()->get('email'),
-                    'user_password' => $form->handle()->get('password'),
-                    'remember'      => $form->handle()->get('remember'),
-                ], $secure_cookie);
-
-                if (!Request::cookie(LOGGED_IN_COOKIE)) {
-                    if (headers_sent()) {
-                        $user = new WP_Error(
-                            'test_cookie',
-                            __('Désolé, impossible d\'enregistrer les cookies d\'authentification.', 'theme')
-                        );
-                    } elseif (Request::cookie('testcookie') && !Request::cookie(TEST_COOKIE)) {
-                        $user = new WP_Error(
-                            'test_cookie',
-                            __(
-                                'Il semble que les cookies soit bloqués par votre navigateur. ' .
-                                'Impossible de procéder à l\'authentification.',
-                                'theme'
-                            )
-                        );
-                    }
-                }
-
-                if (!$user instanceof WP_Error && !$reauth) {
-                    $form->handle()->setRedirectUrl(Url::root()->render());
-                    $form->handle()->success();
-                } elseif ($user instanceof WP_Error) {
-                    if ($message = $user->get_error_message()) {
-                        $form->notices()->add('error', $message);
-                    } else {
-                        $form->notices()->add('error', __('Erreur lors de la tentative d\'authentification', 'theme'));
-                    }
-
-                    $form->handle()->fail();
-                }
-            } else {
                 $form->handle()->fail();
             }
         }

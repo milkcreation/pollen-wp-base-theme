@@ -1,0 +1,46 @@
+// Variables
+$root-path-url: "../../";
+
+@import "../variables";
+
+// Dépendances
+@import "../mixins/article";
+@import "../fonts/typography";
+
+// Personnalisation
+@include article-blocks-styles;
+
+/** Blocs */
+.wp-block {
+  max-width:1140px !important;
+  font-family: fontFamily(regular);
+}
+
+.wp-block[data-align="wide"] {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  max-width: 1140px !important;
+}
+
+.wp-block[data-align="full"] {
+  margin-left: calc(-100% / 2 + 100% / 2) !important;
+  margin-right: calc(-100% / 2 + 100% / 2) !important;
+  max-width: none !important;
+}
+
+/** Titre */
+.editor-post-title {
+  textarea {
+    font-family: fontFamily(alt);
+    text-transform: uppercase;
+    line-height: 1;
+    color: color(regular);
+    font-size: 2.5rem;
+  }
+}
+
+/** Editeur classique */
+.mce-content-body {
+  @include article-body-attrs;
+  @include article-styles;
+}

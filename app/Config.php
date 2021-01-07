@@ -68,9 +68,7 @@ class Config extends ParamsBag
                  */
                 'title'    => true,
                 'meta'     => [
-                    'format-detection' => 'telephone=no',
                     'robots'           => Env::isProd() ? 'index, follow' : 'none',
-                    'viewport'         => 'width=device-width, initial-scale=1, shrink-to-fit=no',
                 ],
                 'priority' => [
                     'description',

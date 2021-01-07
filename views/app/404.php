@@ -1,10 +1,10 @@
 <?php
+
 /**
  * @var App\View $this
  */
+$this->layout('layout::base', $this->all());
 ?>
-<?php $this->layout('layout::demo'); ?>
-
 <div class="Content Content--404">
     <?php if ($this->get('article-header', null) !== false) : ?>
         <header class="ContentHeader">
@@ -20,14 +20,6 @@
 
     <main class="ContentBody">
         <div class="container">
-            <?php if ($this->get('breadcrumb', null) !== false) : ?>
-                <div class="row">
-                    <div class="col-12">
-                        <?php echo partial('breadcrumb', $this->get('breadcrumb', [])); ?>
-                    </div>
-                </div>
-            <?php endif; ?>
-
             <div class="row">
                 <div class="col-12">
                     <?php echo partial('article-body', [

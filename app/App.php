@@ -39,12 +39,11 @@ class App extends Application
         add_action('wp', function () {
             /** Débogage, tests ... */
             if (isset($_REQUEST['debug'])) {
-                return _default_wp_die_handler('MODE DEBUG');
+                _default_wp_die_handler('MODE DEBUG');
             } else {
                 return null;
             }
         });
-
         return $this;
     }
 
@@ -59,7 +58,7 @@ class App extends Application
      *     définir.
      * @param mixed $default Valeur de retour par défaut du paramètre à récupérer.
      *
-     * @return mixed
+     * @return Config|int|bool|string|array|object|null
      */
     public function config($key = null, $default = null)
     {

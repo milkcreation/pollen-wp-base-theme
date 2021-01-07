@@ -1,2 +1,2 @@
-import './scss/admin/styles.scss';
-import './js/admin/scripts';
+import './scss/admin/admin.scss';
+import './js/admin/admin';

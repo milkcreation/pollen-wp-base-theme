@@ -1,11 +1,11 @@
 <?php
+
 /**
  * @var App\View $this
  */
+$this->layout('layout::base', $this->all());
 ?>
-<?php $this->layout('layout::demo'); ?>
-
-<div class="Content Content--welcome">
+<div class="Content Content--front_page">
     <?php if ($this->get('article-header', null) !== false) : ?>
         <header class="ContentHeader">
             <div class="container-fluid p-0">

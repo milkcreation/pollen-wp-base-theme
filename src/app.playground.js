@@ -1,2 +1,2 @@
-import './scss/app/playground/styles.scss';
-import './js/app/playground/scripts';
+import './scss/app/playground.scss';
+import './js/app/playground';

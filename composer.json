@@ -11,7 +11,7 @@
     "boilerplate",
     "starter kit"
   ],
-  "time": "2021-01-05",
+  "time": "2021-01-07",
   "license": "proprietary",
   "authors": [
     {
@@ -37,6 +37,7 @@
   "require": {
     "php": ">=7.3",
     "composer/installers": "~1.0",
+    "pollen-solutions/docs": "^1.0",
     "pollen-solutions/cookie-law": "^1.0",
     "pollen-solutions/outdated-browser": "^1.0",
     "pollen-solutions/theme-suite": "^1.0",

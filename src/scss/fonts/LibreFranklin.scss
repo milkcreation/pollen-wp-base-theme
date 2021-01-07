@@ -1,0 +1,134 @@
+// Variables
+$root-path-url: "../../";
+
+@import "../variables";
+
+// Personnalisation
+@if index($font-family-enabled, LibreFranklin) {
+  /* libre-franklin-100 - latin */
+  @font-face {
+    font-family: 'Libre Franklin';
+    font-style: normal;
+    font-weight: 100;
+    src: url('#{$font-path-url}/LibreFranklin/libre-franklin-v4-latin-100.eot'); /* IE9 Compat Modes */
+    src: local('Libre Franklin Thin'), local('LibreFranklin-Thin'),
+    url('#{$font-path-url}/LibreFranklin/libre-franklin-v4-latin-100.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('#{$font-path-url}/LibreFranklin/libre-franklin-v4-latin-100.woff2') format('woff2'), /* Super Modern Browsers */
+    url('#{$font-path-url}/LibreFranklin/libre-franklin-v4-latin-100.woff') format('woff'), /* Modern Browsers */
+    url('#{$font-path-url}/LibreFranklin/libre-franklin-v4-latin-100.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('#{$font-path-url}/LibreFranklin/libre-franklin-v4-latin-100.svg#LibreFranklin') format('svg'); /* Legacy iOS */
+    font-display: swap;
+  }
+  /* libre-franklin-200 - latin */
+  @font-face {
+    font-family: 'Libre Franklin';
+    font-style: normal;
+    font-weight: 200;
+    src: url('#{$font-path-url}/LibreFranklin/libre-franklin-v4-latin-200.eot'); /* IE9 Compat Modes */
+    src: local('Libre Franklin ExtraLight'), local('LibreFranklin-ExtraLight'),
+    url('#{$font-path-url}/LibreFranklin/libre-franklin-v4-latin-200.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('#{$font-path-url}/LibreFranklin/libre-franklin-v4-latin-200.woff2') format('woff2'), /* Super Modern Browsers */
+    url('#{$font-path-url}/LibreFranklin/libre-franklin-v4-latin-200.woff') format('woff'), /* Modern Browsers */
+    url('#{$font-path-url}/LibreFranklin/libre-franklin-v4-latin-200.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('#{$font-path-url}/LibreFranklin/libre-franklin-v4-latin-200.svg#LibreFranklin') format('svg'); /* Legacy iOS */
+    font-display: swap;
+  }
+  /* libre-franklin-300 - latin */
+  @font-face {
+    font-family: 'Libre Franklin';
+    font-style: normal;
+    font-weight: 300;
+    src: url('#{$font-path-url}/LibreFranklin/libre-franklin-v4-latin-300.eot'); /* IE9 Compat Modes */
+    src: local('Libre Franklin Light'), local('LibreFranklin-Light'),
+    url('#{$font-path-url}/LibreFranklin/libre-franklin-v4-latin-300.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('#{$font-path-url}/LibreFranklin/libre-franklin-v4-latin-300.woff2') format('woff2'), /* Super Modern Browsers */
+    url('#{$font-path-url}/LibreFranklin/libre-franklin-v4-latin-300.woff') format('woff'), /* Modern Browsers */
+    url('#{$font-path-url}/LibreFranklin/libre-franklin-v4-latin-300.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('#{$font-path-url}/LibreFranklin/libre-franklin-v4-latin-300.svg#LibreFranklin') format('svg'); /* Legacy iOS */
+    font-display: swap;
+  }
+  /* libre-franklin-regular - latin */
+  @font-face {
+    font-family: 'Libre Franklin';
+    font-style: normal;
+    font-weight: 400;
+    src: url('#{$font-path-url}/LibreFranklin/libre-franklin-v4-latin-regular.eot'); /* IE9 Compat Modes */
+    src: local('Libre Franklin'), local('LibreFranklin-Regular'),
+    url('#{$font-path-url}/LibreFranklin/libre-franklin-v4-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('#{$font-path-url}/LibreFranklin/libre-franklin-v4-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+    url('#{$font-path-url}/LibreFranklin/libre-franklin-v4-latin-regular.woff') format('woff'), /* Modern Browsers */
+    url('#{$font-path-url}/LibreFranklin/libre-franklin-v4-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('#{$font-path-url}/LibreFranklin/libre-franklin-v4-latin-regular.svg#LibreFranklin') format('svg'); /* Legacy iOS */
+    font-display: swap;
+  }
+  /* libre-franklin-500 - latin */
+  @font-face {
+    font-family: 'Libre Franklin';
+    font-style: normal;
+    font-weight: 500;
+    src: url('#{$font-path-url}/LibreFranklin/libre-franklin-v4-latin-500.eot'); /* IE9 Compat Modes */
+    src: local('Libre Franklin Medium'), local('LibreFranklin-Medium'),
+    url('#{$font-path-url}/LibreFranklin/libre-franklin-v4-latin-500.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('#{$font-path-url}/LibreFranklin/libre-franklin-v4-latin-500.woff2') format('woff2'), /* Super Modern Browsers */
+    url('#{$font-path-url}/LibreFranklin/libre-franklin-v4-latin-500.woff') format('woff'), /* Modern Browsers */
+    url('#{$font-path-url}/LibreFranklin/libre-franklin-v4-latin-500.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('#{$font-path-url}/LibreFranklin/libre-franklin-v4-latin-500.svg#LibreFranklin') format('svg'); /* Legacy iOS */
+    font-display: swap;
+  }
+  /* libre-franklin-600 - latin */
+  @font-face {
+    font-family: 'Libre Franklin';
+    font-style: normal;
+    font-weight: 600;
+    src: url('#{$font-path-url}/LibreFranklin/libre-franklin-v4-latin-600.eot'); /* IE9 Compat Modes */
+    src: local('Libre Franklin SemiBold'), local('LibreFranklin-SemiBold'),
+    url('#{$font-path-url}/LibreFranklin/libre-franklin-v4-latin-600.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('#{$font-path-url}/LibreFranklin/libre-franklin-v4-latin-600.woff2') format('woff2'), /* Super Modern Browsers */
+    url('#{$font-path-url}/LibreFranklin/libre-franklin-v4-latin-600.woff') format('woff'), /* Modern Browsers */
+    url('#{$font-path-url}/LibreFranklin/libre-franklin-v4-latin-600.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('#{$font-path-url}/LibreFranklin/libre-franklin-v4-latin-600.svg#LibreFranklin') format('svg'); /* Legacy iOS */
+    font-display: swap;
+  }
+  /* libre-franklin-700 - latin */
+  @font-face {
+    font-family: 'Libre Franklin';
+    font-style: normal;
+    font-weight: 700;
+    src: url('#{$font-path-url}/LibreFranklin/libre-franklin-v4-latin-700.eot'); /* IE9 Compat Modes */
+    src: local('Libre Franklin Bold'), local('LibreFranklin-Bold'),
+    url('#{$font-path-url}/LibreFranklin/libre-franklin-v4-latin-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('#{$font-path-url}/LibreFranklin/libre-franklin-v4-latin-700.woff2') format('woff2'), /* Super Modern Browsers */
+    url('#{$font-path-url}/LibreFranklin/libre-franklin-v4-latin-700.woff') format('woff'), /* Modern Browsers */
+    url('#{$font-path-url}/LibreFranklin/libre-franklin-v4-latin-700.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('#{$font-path-url}/LibreFranklin/libre-franklin-v4-latin-700.svg#LibreFranklin') format('svg'); /* Legacy iOS */
+    font-display: swap;
+  }
+  /* libre-franklin-800 - latin */
+  @font-face {
+    font-family: 'Libre Franklin';
+    font-style: normal;
+    font-weight: 800;
+    src: url('#{$font-path-url}/LibreFranklin/libre-franklin-v4-latin-800.eot'); /* IE9 Compat Modes */
+    src: local('Libre Franklin ExtraBold'), local('LibreFranklin-ExtraBold'),
+    url('#{$font-path-url}/LibreFranklin/libre-franklin-v4-latin-800.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('#{$font-path-url}/LibreFranklin/libre-franklin-v4-latin-800.woff2') format('woff2'), /* Super Modern Browsers */
+    url('#{$font-path-url}/LibreFranklin/libre-franklin-v4-latin-800.woff') format('woff'), /* Modern Browsers */
+    url('#{$font-path-url}/LibreFranklin/libre-franklin-v4-latin-800.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('#{$font-path-url}/LibreFranklin/libre-franklin-v4-latin-800.svg#LibreFranklin') format('svg'); /* Legacy iOS */
+    font-display: swap;
+  }
+  /* libre-franklin-900 - latin */
+  @font-face {
+    font-family: 'Libre Franklin';
+    font-style: normal;
+    font-weight: 900;
+    src: url('#{$font-path-url}/LibreFranklin/libre-franklin-v4-latin-900.eot'); /* IE9 Compat Modes */
+    src: local('Libre Franklin Black'), local('LibreFranklin-Black'),
+    url('#{$font-path-url}/LibreFranklin/libre-franklin-v4-latin-900.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('#{$font-path-url}/LibreFranklin/libre-franklin-v4-latin-900.woff2') format('woff2'), /* Super Modern Browsers */
+    url('#{$font-path-url}/LibreFranklin/libre-franklin-v4-latin-900.woff') format('woff'), /* Modern Browsers */
+    url('#{$font-path-url}/LibreFranklin/libre-franklin-v4-latin-900.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('#{$font-path-url}/LibreFranklin/libre-franklin-v4-latin-900.svg#LibreFranklin') format('svg'); /* Legacy iOS */
+    font-display: swap;
+  }
+}

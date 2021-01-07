@@ -1,0 +1,17 @@
+// Variables
+$root-path-url: "../../";
+
+@import "../variables";
+
+// Personnalisation
+html {
+  padding: 2em !important;
+}
+
+html .mceContentBody {
+  max-width: 1140px;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}

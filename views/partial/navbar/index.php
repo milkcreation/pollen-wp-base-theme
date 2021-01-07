@@ -4,7 +4,7 @@
  */
 ?>
 <div <?php echo $this->htmlAttrs(); ?>>
-    <div class="container-fluid p-0">
+    <div class="container p-0">
         <div class="row">
             <?php if ($items = $this->get('items', [])) : ?>
             <div class="col-12">

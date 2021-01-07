@@ -139,6 +139,7 @@ $root-path-url: "../../";
       border-style: solid;
       border-width: 1px;
       border-radius: 6px;
+      border-color:color(transparent);
       font-family: fontFamily(regular);
       font-size: 0.8em;
       font-weight: fontWeight(bold);
@@ -203,6 +204,7 @@ $root-path-url: "../../";
 
       &.Button--alt {
         background-color: color(white);
+        border-color:color(primary);
 
         &:not([disabled]):hover {
           color: color(white);
@@ -239,6 +241,7 @@ $root-path-url: "../../";
       &.Button--alt {
         color: color(secondary);
         background-color: color(white);
+        border-color:color(secondary);
 
         &:not([disabled]):hover {
           color: color(white);
@@ -275,6 +278,7 @@ $root-path-url: "../../";
       &.Button--alt {
         color: color(regular);
         background-color: color(white);
+        border-color:color(regular);
 
         &:not([disabled]):hover {
           color: color(white);
@@ -299,6 +303,11 @@ $root-path-url: "../../";
     &.Button--small {
       font-size: 0.7em;
       padding: 0.4em 2em;
+    }
+
+    &.Button--medium {
+      font-size: 0.8em;
+      padding: 0.8em 3em;
     }
 
     &.Button--large {

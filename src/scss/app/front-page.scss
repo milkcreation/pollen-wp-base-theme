@@ -1,0 +1,8 @@
+// Variables
+$root-path-url: "../../";
+
+@import "../variables";
+
+// Dépendances
+@import "../partial/article-header";
+@import "../partial/article-body";

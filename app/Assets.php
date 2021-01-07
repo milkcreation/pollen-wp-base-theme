@@ -128,39 +128,47 @@ class Assets
 
         // Meta-tags
         add_action('wp_head', function () {
-            $tags = $this->app()->config()->parseMetaTags();
+            if (!has_action('wpseo_head')) {
+                $tags = $this->app()->config()->parseMetaTags();
 
-            if ($tags->has('title') && has_action('wp_head', '_wp_render_title_tag') == 1) {
-                remove_action('wp_head', '_wp_render_title_tag', 1);
-            }
-
-            echo "<!-- SEO -->";
-            foreach ($tags as $name => $content) {
-                switch ($name) {
-                    default:
-                        echo Partial::get('tag', [
-                            'tag'   => 'meta',
-                            'attrs' => [
-                                'id'      => false,
-                                'class'   => false,
-                                'name'    => $name,
-                                'content' => $content,
-                            ],
-                        ]);
-                        break;
-                    case 'title' :
-                        echo Partial::get('tag', [
-                            'tag'     => $name,
-                            'attrs'   => [
-                                'id'    => false,
-                                'class' => false,
-                            ],
-                            'content' => $content,
-                        ]);
-                        break;
+                if ($tags->has('title') && has_action('wp_head', '_wp_render_title_tag') == 1) {
+                    remove_action('wp_head', '_wp_render_title_tag', 1);
                 }
+
+                echo "<!-- SEO -->";
+                foreach ($tags as $name => $content) {
+                    switch ($name) {
+                        default:
+                            echo Partial::get(
+                                'tag',
+                                [
+                                    'tag'   => 'meta',
+                                    'attrs' => [
+                                        'id'      => false,
+                                        'class'   => false,
+                                        'name'    => $name,
+                                        'content' => $content,
+                                    ],
+                                ]
+                            );
+                            break;
+                        case 'title' :
+                            echo Partial::get(
+                                'tag',
+                                [
+                                    'tag'     => $name,
+                                    'attrs'   => [
+                                        'id'    => false,
+                                        'class' => false,
+                                    ],
+                                    'content' => $content,
+                                ]
+                            );
+                            break;
+                    }
+                }
+                echo "<!-- / SEO -->";
             }
-            echo "<!-- / SEO -->";
         }, 0);
 
         /** Favicons */

@@ -1,0 +1,104 @@
+// Variables
+$root-path-url: "../../";
+
+@import "../variables";
+
+// Personnalisation
+.Navbar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  background-color: color(white);
+  z-index: 1001;
+}
+
+.Navbar-logoLink {
+  display: block;
+}
+
+.Navbar-menuItems {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Navbar-menuItem {
+  width: 16.666666%;
+  text-align: center;
+}
+
+.Navbar-menuItemLink {
+  position: relative;
+  display: block;
+  padding: 20px 10px;
+  font-weight: fontWeight(medium);
+  line-height: 1.2;
+
+  &::before {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    display: block;
+    content: " ";
+    width: 20px;
+    height: 2px;
+    margin-left: -10px;
+    background-color: color(primary);
+    transform: scaleX(0);
+    transition: transform 200ms cubic-bezier(0.42, 0, 1.0, 1.0);
+  }
+
+  &:hover::before {
+    transform: scaleX(1);
+  }
+}
+
+.Navbar-menuItemLink--logo {
+  padding: 10px 15px;
+  transition: transform 200ms cubic-bezier(0.42, 0, 1.0, 1.0);
+
+  svg {
+    width: 40px;
+    display: inline-block;
+    fill: color(primary);
+  }
+
+  &:hover {
+    transform:scale(1.2);
+  }
+
+  &::before {
+    display: none;
+  }
+}
+
+.Navbar-menuItemLink {
+  &,
+  &:active,
+  &:focus,
+  &:visited {
+    color: color(primary);
+  }
+}
+
+.Navbar.inViewport {
+  background-color: transparent;
+
+  .Navbar-menuItemLink {
+    &,
+    &:active,
+    &:focus,
+    &:visited {
+      color: color(white);
+    }
+
+    &::before {
+      background-color: color(white);
+    }
+  }
+
+  .Navbar-menuItemLink--logo svg {
+    fill: color(white);
+  }
+}

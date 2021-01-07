@@ -1,0 +1,198 @@
+// Variables
+$root-path-url: "../../";
+
+@import "../variables";
+
+$email-width: 680px;
+
+// Dépendances
+@import "reset";
+@import "hybrid";
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700');
+
+// Personnalisation
+* {
+  font-family: 'Barlow', sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0 !important;
+  mso-line-height-rule: exactly;
+  background-color: color(lighter);
+}
+
+td, th {
+  color: color(regular);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: color(regular);
+}
+
+p {
+  margin: 0 0 10px;
+  color: color(regular);
+}
+
+div {
+  margin: 0;
+  color: color(regular);
+}
+
+a {
+  text-decoration: none;
+
+  &,
+  &:active,
+  &:focus,
+  &:visited {
+    color: color(primary);
+  }
+
+  &:hover {
+    color: color(primary-alt);
+  }
+}
+
+.center {
+  width: 100%;
+  background-color: color(lighter);
+}
+
+.msoTableWrapper {
+  background-color: color(lighter);
+}
+
+.EmailContainer {
+  max-width: #{$email-width};
+  margin: 0 auto;
+}
+
+.tableEmailHeader {
+  max-width: #{$email-width};
+}
+
+.rowHeaderContent {
+  > td {
+    padding: 20px 0;
+    text-align: center
+  }
+}
+
+.BodyHeader-logo {
+  height: auto;
+  font-family: sans-serif;
+  font-size: 15px;
+  line-height: 15px;
+  color: #555555;
+}
+
+.tableEmailBody {
+  max-width: #{$email-width};
+  margin: auto;
+}
+
+.rowBodyContent {
+  > td {
+    background-color: color(white);
+  }
+}
+
+.rowBodyContent-section {
+  > td {
+    font-family: sans-serif;
+    font-size: 15px;
+    line-height: 20px;
+  }
+}
+
+.rowBodyContent-section--header {
+  > td {
+    padding: 20px;
+  }
+}
+
+.rowBodyContent-section--body {
+  > td {
+    padding: 0 20px;
+  }
+}
+
+.rowBodyContent-section--footer {
+  > td {
+    padding: 20px;
+  }
+}
+
+.rowBodyContent-section--subfooter {
+  > td {
+    padding: 10px;
+    font-size: 12px;
+    text-align: center;
+    color: color(medium);
+  }
+}
+
+.tableEmailFooter {
+  max-width: #{$email-width};
+}
+
+.rowFooterContent {
+  > td {
+    padding: 20px;
+    font-family: sans-serif;
+    font-size: 12px;
+    line-height: 15px;
+    text-align: center;
+    color: color(medium);
+  }
+}
+
+// STYLES
+/// Titres
+.Title--1 {
+  margin: 0 0 10px;
+  font-size: 32px;
+  line-height: 36px;
+  color: color(regular);
+  font-weight: fontWeight(bold);
+}
+
+/// Boutons
+td[class*=" ButtonTd--"],
+td[class^="ButtonTd--"],
+a[class*=" Button--"],
+a[class^="Button--"] {
+  background: color(primary) !important;
+  border-color: color(primary) !important;
+  border-radius: 4px;
+  transition: all 100ms ease-in;
+}
+
+a[class*=" Button--"],
+a[class^="Button--"] {
+  border: 1px solid #000000;
+  font-family: sans-serif;
+  font-size: 15px;
+  line-height: 15px;
+  text-decoration: none !important;
+  padding: 13px 17px;
+  display: inline-block;
+
+  &,
+  &:active,
+  &:focus,
+  &:visited {
+    color: color(white);
+  }
+}
+
+td.ButtonTd--1,
+a.Button--1 {
+  &:hover {
+    background: color(white) !important;
+    border-color: color(primary) !important;
+    color: color(primary) !important;
+  }
+}

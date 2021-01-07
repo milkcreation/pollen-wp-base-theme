@@ -6,5 +6,4 @@ use tiFy\Wordpress\Query\QueryTerm as BaseQueryTerm;
 
 class QueryTerm extends BaseQueryTerm
 {
-
 }

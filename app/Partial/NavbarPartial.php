@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace App\Partial;
 
@@ -12,33 +14,43 @@ class NavbarPartial extends AbstractPartial
      */
     public function render(): string
     {
-        /*$items = array_values($this->get('items', []));
-        $key = (int)floor(count($items) / 2);
-        $items = Arr::insertAfter($items, [
-            'attrs'   => [
-                'class' => 'Navbar-menuItemLink--logo',
-                'href'  => Url::root('/')->render(),
+        $items = array_values($this->get('items', []));
+        $key = (int)ceil(count($items) / 2);
+        $items = Arr::insertAfter(
+            $items,
+            [
+                'attrs'   => [
+                    'class' => 'Navbar-menuItemLink--logo',
+                    'href'  => Url::root('/')->render(),
+                ],
+                'content' => $this->app()->img('svg/logo-mono.svg'),
             ],
-            'content' => $this->app()->img('svg/logo-mono.svg'),
-        ], $key);
+            $key
+        );
 
-        $this->set('items', array_map(function ($item) {
-            $item['attrs'] = $item['attrs'] ?? [];
+        $this->set(
+            [
+                'attrs.data-control' => 'admin-bar-pos',
+                'items'              => array_map(
+                    function ($item) {
+                        $item['attrs'] = $item['attrs'] ?? [];
 
-            $item['tag'] = $item['tag'] ?? (isset($item['attrs']['href']) ? 'a' : 'div');
+                        $item['tag'] = $item['tag'] ?? (isset($item['attrs']['href']) ? 'a' : 'div');
 
-            $class = $item['attrs']['class'] ?? '';
+                        $class = $item['attrs']['class'] ?? '';
 
-            switch ($item['tag']) {
-                case 'a' :
-                    $item['attrs']['class'] = sprintf('%s Navbar-menuItemLink', $class);
-                    break;
-            }
+                        switch ($item['tag']) {
+                            case 'a' :
+                                $item['attrs']['class'] = sprintf('%s Navbar-menuItemLink', $class);
+                                break;
+                        }
 
-            return $item;
-        }, $items));
-
-        $this->set('attrs.data-control', 'admin-bar-pos');*/
+                        return $item;
+                    },
+                    $items
+                ),
+            ]
+        );
 
         return parent::render();
     }

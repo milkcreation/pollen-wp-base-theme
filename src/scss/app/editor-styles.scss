@@ -1,0 +1,43 @@
+// Variables
+$root-path-url: "../../";
+
+@import "../variables";
+
+// Dépendances
+@import "../partial/article-header";
+@import "../partial/article-body";
+
+// Personnalisation
+.ArticleBody-content--editor {
+  @include article-preview-helpers;
+}
+
+.EditorStyles-colors {
+  margin:0 -10px;
+  display: block;
+
+  &::before,
+  &::after {
+    display: block;
+    content: " ";
+  }
+
+  &::after {
+    clear: both;
+  }
+}
+
+.EditorStyles-color {
+  float:left;
+  padding:10px;
+  text-align: center;
+
+  > a {
+    content:" ";
+    display: block;
+    border: solid 1px color(light);
+    width:100px;
+    height:100px;
+    margin-bottom: 5px;
+  }
+}

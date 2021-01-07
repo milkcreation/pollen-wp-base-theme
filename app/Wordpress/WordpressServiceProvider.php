@@ -7,7 +7,8 @@ use tiFy\Container\ServiceProvider;
 use tiFy\Support\Proxy\Asset;
 use tiFy\Support\Proxy\Router;
 use tiFy\Support\Proxy\Url;
-use WP_Admin_Bar, WP_Screen;
+use WP_Admin_Bar;
+use WP_Screen;
 
 class WordpressServiceProvider extends ServiceProvider
 {

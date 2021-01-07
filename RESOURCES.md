@@ -1,5 +1,13 @@
 # Liste de ressources utiles
 
+## Couleurs
+
+[Déclinaisons couleurs](https://www.w3schools.com/colors/colors_picker.asp)
+
+[Références](https://htmlcolorcodes.com/fr/)
+
+[Nom de qualification](https://www.color-blindness.com/color-name-hue/)
+
 ## Générateur de textes
 
 ### Loripsum 

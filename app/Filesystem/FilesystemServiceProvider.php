@@ -13,9 +13,10 @@ class FilesystemServiceProvider extends ServiceProvider
     /**
      * @inheritDoc
      */
-    public function boot()
+    public function boot(): void
     {
         Storage::registerImg('app.img', get_stylesheet_directory() . '/dist/images');
-        Storage::registerLocal('app.resources', Env::get('APP_RESOURCES', ABSPATH));
+        $resourcesPath = Env::get('APP_RESOURCES');
+        Storage::registerLocal('app.resources', is_dir($resourcesPath) ? $resourcesPath : ABSPATH);
     }
 }
