@@ -1,2 +1,2 @@
-import './scss/wp/editor/styles.scss';
-import './js/wp/editor/scripts';
+import './scss/wp/editor.scss';
+import './js/wp/editor';

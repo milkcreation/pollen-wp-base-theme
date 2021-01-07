@@ -1,0 +1,9 @@
+// Variables
+$root-path-url: "../../";
+
+@import "../variables";
+
+// Dépendances
+@import "~presstify-framework/field/suggest/scss/styles";
+@import "~presstify-framework/partial/holder/scss/styles";
+@import "../partial/article-header";

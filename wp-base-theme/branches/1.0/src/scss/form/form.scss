@@ -1,0 +1,31 @@
+// Variables
+$root-path-url: "../../";
+
+@import "../variables";
+
+$form-field-border-width: 0 !default;
+$form-field-border-radius: 0 !default;
+
+// Dépendances
+@import "~presstify-framework/form/scss/styles";
+
+// Personnalisation
+.Form {
+  .FieldLabel {
+    font-weight: fontWeight(medium);
+  }
+
+  .FieldCheckbox + .FormField-label--privacy {
+    text-transform: none;
+    padding-top: 0;
+  }
+
+  .FieldCheckbox + .FieldLabel {
+    padding-top: 4px;
+  }
+
+  .PrivacyLink {
+    color: color(primary);
+    border-bottom: dotted 1px color(primary);
+  }
+}

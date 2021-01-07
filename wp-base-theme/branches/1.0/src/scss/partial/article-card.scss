@@ -1,0 +1,13 @@
+// Variables
+$root-path-url: "../../";
+
+@import "../variables";
+
+// Dépendances
+@import "~presstify-framework/partial/holder/scss/styles.scss";
+@import "~pollen-solutions/theme-suite/resources/assets/src/scss/partial/article-card";
+
+// Personnalisation
+.ArticleCard-excerpt {
+  margin-bottom: 15px;
+}

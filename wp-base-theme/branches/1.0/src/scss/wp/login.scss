@@ -1,0 +1,118 @@
+// Variables
+$root-path-url: "../../";
+
+@import "../variables";
+
+$wp-login-link-color: color(primary)!default;
+$wp-login-link-color-hover: lighten(color(primary), 10%) !default;
+
+// Dépendances
+@import "~bootstrap/scss/bootstrap";
+@import "../reset";
+@import "../helpers";
+@import "../fonts/typography";
+
+// Personnalisation
+body.login {
+  div#login {
+    h1 {
+      text-align: center;
+
+      a {
+        background-size: contain;
+        width: 300px;
+        height: 90px;
+      }
+    }
+
+    form#loginform {
+      p {
+        label {
+        }
+
+        &.forgetmenot {
+
+          input#rememberme {
+          }
+        }
+
+        &.submit {
+          input#wp-submit {
+            background: $wp-login-link-color !important;
+            box-shadow: none;
+            border: none;
+            border-radius: 0;
+            font-weight: fontWeight(bold);
+            transition: background-color 300ms ease-in-out;
+            text-shadow: none !important;
+
+            &:hover,
+            &:active {
+              background: $wp-login-link-color-hover !important;
+            }
+          }
+        }
+      }
+
+      input {
+        &#user_login {
+        }
+
+        #user_pass {
+        }
+      }
+    }
+
+    p#nav {
+      a {
+        color: $wp-login-link-color !important;
+
+        &:hover,
+        &:active {
+          color: $wp-login-link-color-hover !important;
+        }
+      }
+    }
+
+    p#backtoblog {
+      a {
+        color: $wp-login-link-color !important;
+
+        &:hover,
+        &:active {
+          color: $wp-login-link-color-hover !important;
+        }
+      }
+    }
+
+    .privacy-policy-page-link {
+      a {
+        color: $wp-login-link-color !important;
+
+        &:hover,
+        &:active {
+          color: $wp-login-link-color-hover !important;
+        }
+      }
+    }
+  }
+
+  /* = Hack - body height 100% = */
+  position: relative;
+  min-height: 100% !important;
+  height: auto;
+
+  &::after {
+    content: "\0000A0";
+    display: block;
+    height: 10px;
+  }
+
+  > .clear {
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 0;
+    position: absolute;
+  }
+}

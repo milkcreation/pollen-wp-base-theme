@@ -61,7 +61,7 @@ return [
 
         /** Extensions */
         Pollen\CookieLaw\CookieLawServiceProvider::class,
-        Pollen\OutdatedBrowser\OutdatedBrowser::class,
+        Pollen\OutdatedBrowser\OutdatedBrowserServiceProvider::class,
         Pollen\ThemeSuite\ThemeSuiteServiceProvider::class,
         Pollen\TinyMce\TinyMceServiceProvider::class,
         /**/
@@ -77,11 +77,13 @@ return [
 
     /**
      * Paramètres de configuration de l'application.
-     * @see \App\Params
+     * @see \App\Config
      * @var array
      */
-    'config'     => [
+    'config'    => [
+        // Activation de l'interface d'authentification
+        'authentication' => false,
         // Identifiant Google Analytics
-        'ua-code' => ''
-    ]
+        'ua-code'        => '',
+    ],
 ];

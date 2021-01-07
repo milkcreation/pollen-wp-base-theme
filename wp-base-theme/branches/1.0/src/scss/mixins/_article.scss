@@ -24,12 +24,12 @@ $gallery-gutters: 4 !default;
     font-weight: fontWeight(regular);
   }
   /// Standards
-  p:not([class*=""]) {
+  p {
     margin-top: 0;
     margin-bottom: 1.5em;
   }
   /// Sans espace
-  div:not([class*=""]) {
+  div {
     margin: 0;
   }
 
@@ -117,16 +117,17 @@ $gallery-gutters: 4 !default;
     position: relative;
     background-color: color(transparent);
     border: 0;
-    height: 1px;
+    height: 3px;
     margin: 1em 0;
     clear: both;
 
     &::before {
       position: absolute;
       top:0;
-      left:0;
-      width: 18px;
-      height: 3px;
+      left:50%;
+      width: 20px;
+      margin-left:-10px;
+      height: 100%;
       content: " ";
       display: inline-block;
       vertical-align: middle;
@@ -156,18 +157,25 @@ $gallery-gutters: 4 !default;
     }
 
     & li {
-      padding-left: 1.5em;
-      text-indent: -.7em;
-    }
+      position:relative;
 
-    & li:before {
-      display: inline-block;
-      content: "\25CF";
-      color: color(regular);
-      margin-right: 0.5em;
-      line-height: 21.5px;
-      vertical-align: top;
-      height: 9px;
+      > p {
+        margin-bottom:0;
+      }
+
+      &::before {
+        float:left;
+        margin-right:0.5em;
+        content: "\25CF";
+        color: color(primary);
+        line-height: 21.5px;
+        vertical-align: top;
+        height: 9px;
+      }
+
+      & li {
+        padding-left: 1.5em;
+      }
     }
   }
 
@@ -296,7 +304,6 @@ $gallery-gutters: 4 !default;
   }
 }
 
-
 /** BOUTONS */
 @mixin article-buttons-styles {
   @include elements-buttons-styles;
@@ -330,7 +337,7 @@ $gallery-gutters: 4 !default;
 /** GALERIE */
 @mixin gallery-styles {
   .gallery {
-    margin: -#{$gallery-gutters}px;
+    margin: -#{$gallery-gutters}px !important;
     box-sizing: border-box;
     display: flex;
     flex-wrap: wrap;
@@ -399,11 +406,9 @@ $gallery-gutters: 4 !default;
       }
 
       img {
-        position: relative;
-        min-width: 100%;
-        min-height: 100%;
-        max-width: 100%;
-        max-height: 100%;
+        position: absolute;
+        top:0;
+        left:0;
         object-fit: cover;
       }
     }

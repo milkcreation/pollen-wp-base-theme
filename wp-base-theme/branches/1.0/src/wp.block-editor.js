@@ -1,2 +1,2 @@
-import './scss/wp/block-editor/styles.scss';
-import './js/wp/block-editor/scripts';
+import './scss/wp/block-editor.scss';
+import './js/wp/block-editor';

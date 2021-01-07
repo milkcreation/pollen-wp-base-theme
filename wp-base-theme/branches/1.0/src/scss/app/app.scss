@@ -1,0 +1,143 @@
+// Variables
+$root-path-url: "../../";
+
+@import "../variables";
+
+// Dépendances
+/** Bootstrap Complete */
+@import "~bootstrap/scss/bootstrap";
+/**/
+
+/** Bootstrap Grid * /
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins/breakpoints';
+@import '~bootstrap/scss/mixins/grid';
+@import '~bootstrap/scss/mixins/grid-framework';
+@import '~bootstrap/scss/grid';
+/**/
+
+@import "../reset";
+@import "../helpers";
+@import "../fonts/typography";
+@import "../mixins/elements";
+@import "~font-awesome/scss/font-awesome";
+@import "~presstify-framework/anim/scss/styles";
+@import "~presstify-framework/theme/scss/styles";
+@import "~pollen-solutions/cookie-law/resources/assets/src/scss/styles";
+@import "~pollen-solutions/outdated-browser/resources/assets/src/partial/outdated-browser/scss/styles";
+@import "../partial/breadcrumb";
+@import "../partial/navbar";
+
+// Personnalisation
+/** LAYOUT **/
+html {
+  font-size: 100%;
+}
+
+body {
+  position: relative;
+  font-size: 1rem;
+  background: color(white);
+}
+
+/** HACK - Fixe le pied de page en bas de page */
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.Site {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.SiteBody {
+  flex: 1 0 auto;
+}
+
+.SiteFooter {
+  flex-shrink: 0;
+}
+
+.Site {
+  overflow: hidden;
+}
+/**/
+
+/** STRUCTURE */
+body {
+  @include elements-body-attrs;
+}
+
+@include elements-styles;
+
+.Content {
+  margin-top: 70px;
+  margin-bottom: 60px;
+}
+
+.ContentBody {
+  margin-top: 15px;
+}
+
+/** COLOPHON */
+.Colophon {
+  padding: 20px 0 10px;
+  background-color: color(lighter);
+  color: color(medium);
+
+  a, a:active, a:focus, a:visited {
+    color: color(medium);
+  }
+}
+
+.Colophon-logoLink {
+  display:block;
+  padding: 10px;
+
+  svg {
+    fill: color(medium);
+  }
+}
+
+.Copyright {
+  font-size: 0.8em;
+  font-style: italic;
+}
+/**/
+
+/** BOOTSTRAP XL */
+@media (min-width: 1200px) {
+
+}
+
+/** BOOTSTRAP LG */
+@media (max-width: 1199px) {
+
+}
+
+/** BOOTSTRAP MD */
+@media (max-width: 991px) {
+
+}
+
+/** BOOTSTRAP SM */
+@media (max-width: 767px) {
+
+}
+
+/** BOOTSTRAP XS */
+@media (max-width: 575px) {
+
+}
+
+/** CUSTOM 480 */
+@media screen and (max-width: 480px) {
+
+}

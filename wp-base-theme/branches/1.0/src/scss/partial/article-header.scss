@@ -1,0 +1,59 @@
+// Variables
+$root-path-url: "../../";
+
+@import "../variables";
+
+// Dépendances
+@import "../mixins/elements";
+@import "~pollen-solutions/theme-suite/resources/assets/src/scss/partial/article-header";
+@import "article-title";
+
+// Personnalisation
+.ArticleHeader-content {
+  @include gradient-linear-styles;
+  margin-top:-70px;
+}
+
+.ArticleHeader--with_content {
+  .ArticleHeader-title {
+    font-size: 5vw;
+    padding: 0 30px;
+
+    .ArticleTitle {
+      color: color(white);
+      text-shadow: 0 0 10px rgba(color(medium), .5);
+      margin-bottom: 0;
+      font-size: 0.9em;
+
+      &::before {
+        position: absolute;
+        bottom: -20px;
+        left: 50%;
+        display: block;
+        content: " ";
+        height: 3px;
+        width: 30px;
+        margin-left: -15px;
+        background-color: color(white);
+        box-shadow: 0 0 10px rgba(color(medium), .5);
+      }
+    }
+
+    .ArticleTitle-content {
+      display: block;
+      font-weight: fontWeight(extra-bold);
+      line-height: 1;
+    }
+
+    .ArticleTitle-after {
+      display: block;
+      font-size: 0.4em;
+      font-weight: fontWeight(light);
+      font-family: fontFamily(alt);
+    }
+  }
+}
+
+.ArticleHeader-breadcrumb {
+  padding:15px 0;
+}

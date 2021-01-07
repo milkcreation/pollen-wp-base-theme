@@ -18,8 +18,8 @@ class LoggedOutMiddleware extends BaseMiddleware
     /**
      * @inheritDoc
      */
-    public function process(HttpRequest $request, RequestHandler $handler): HttpResponse
+    public function process(HttpRequest $psrRequest, RequestHandler $handler): HttpResponse
     {
-        return is_admin() || !is_user_logged_in() ? $handler->handle($request) : Redirect::to('/')->psr();
+        return is_admin() || !is_user_logged_in() ? $handler->handle($psrRequest) : Redirect::to('/')->psr();
     }
 }

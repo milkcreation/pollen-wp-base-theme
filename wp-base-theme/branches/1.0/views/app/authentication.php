@@ -1,10 +1,10 @@
 <?php
+
 /**
  * @var App\View $this
  */
+$this->layout('layout::base', $this->all());
 ?>
-<?php $this->layout('layout::demo'); ?>
-
 <div class="Content Content--authentication">
     <?php if ($this->get('article-header', null) !== false) : ?>
         <header class="ContentHeader">
@@ -22,7 +22,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-6 offset-3">
-                    <?php echo $this->get('content'); ?>
+                    <?php
+                    echo partial('article-body', $this->get('article-body', [])); ?>
                 </div>
             </div>
         </div>

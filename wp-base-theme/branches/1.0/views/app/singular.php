@@ -1,33 +1,28 @@
 <?php
+
 /**
  * @var App\View $this
  */
+$this->layout('layout::base', $this->all());
 ?>
-<?php $this->layout('layout::demo'); ?>
-
 <div class="Content Content--singular">
-    <?php if ($this->get('article-header', null) !== false) : ?>
+    <?php
+    if ($this->get('article-header', null) !== false) : ?>
         <header class="ContentHeader">
             <div class="container-fluid p-0">
                 <div class="row">
                     <div class="col-12">
-                        <?php echo partial('article-header', $this->get('article-header', [])); ?>
+                        <?php
+                        echo partial('article-header', $this->get('article-header', [])); ?>
                     </div>
                 </div>
             </div>
         </header>
-    <?php endif; ?>
+    <?php
+    endif; ?>
 
     <main class="ContentBody">
         <div class="container">
-            <?php if ($this->get('breadcrumb', null) !== false) : ?>
-                <div class="row">
-                    <div class="col-12">
-                        <?php echo partial('breadcrumb', $this->get('breadcrumb', [])); ?>
-                    </div>
-                </div>
-            <?php endif; ?>
-
             <div class="row">
                 <div class="col-12">
                     <?php echo partial('article-body', $this->get('article-body', [])); ?>
@@ -36,15 +31,18 @@
         </div>
     </main>
 
-    <?php if ($this->get('article-footer', null) !== false) : ?>
+    <?php
+    if ($this->get('article-footer', null) !== false) : ?>
         <footer class="ContentFooter">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <?php echo partial('article-footer', $this->get('article-footer', [])); ?>
+                        <?php
+                        echo partial('article-footer', $this->get('article-footer', [])); ?>
                     </div>
                 </div>
             </div>
         </footer>
-    <?php endif; ?>
+    <?php
+    endif; ?>
 </div>
