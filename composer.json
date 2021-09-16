@@ -1,7 +1,7 @@
 {
   "name": "pollen-solutions/wp-base-theme",
   "description": "Theme de démarrage Wordpress de PresstiFy",
-  "homepage": "https://www.presstify.com/pollen-solution/wp-base-theme/",
+  "homepage": "https://github.com/milkcreation/pollen-wp-base-theme.git",
   "type": "wordpress-theme",
   "keywords": [
     "presstify",
@@ -11,24 +11,14 @@
     "boilerplate",
     "starter kit"
   ],
-  "time": "2021-01-07",
-  "license": "proprietary",
+  "time": "2021-09-16",
   "authors": [
     {
       "name": "Jordy Manner",
-      "email": "jordy@presstify.com",
-      "role": "Developper"
+      "email": "jordy@presstify.com"
     }
   ],
   "repositories": [
-    {
-      "type": "composer",
-      "url": "https://composer.presstify.com/pollen-solutions/"
-    },
-    {
-      "type": "composer",
-      "url": "https://composer.presstify.com/presstify/"
-    },
     {
       "type":"composer",
       "url":"https://wpackagist.org"
